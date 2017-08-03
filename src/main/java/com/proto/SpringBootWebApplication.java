@@ -24,11 +24,4 @@ public class SpringBootWebApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SpringBootWebApplication.class, args);
 	}
-
-	//rendre la session hibernate disponible dans l'application par Autowired
-	//https://stackoverflow.com/questions/25063995/spring-boot-handle-to-hibernate-sessionfactory
-	@Bean
-	public SessionFactory sessionFactory(HibernateEntityManagerFactory hemf) {
-		return hemf.getSessionFactory();
-	}
 }

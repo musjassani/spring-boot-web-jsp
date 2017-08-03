@@ -5,6 +5,7 @@ import com.proto.beans.Film;
 import com.proto.beans.Genre;
 import com.proto.services.ArtisteService;
 import com.proto.services.FilmService;
+import com.proto.services.GenreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class FilmServiceImpl extends AbstractServiceImpl<Film> implements FilmSe
     @Autowired
     ArtisteService artisteService;
 
+    @Autowired
+    GenreService genreService;
+
     @Override
     @Transactional
     public void testInsertFilm() {
@@ -29,6 +33,7 @@ public class FilmServiceImpl extends AbstractServiceImpl<Film> implements FilmSe
 
         Genre genre = new Genre();
         genre.setCode("Science-fiction");
+        genreService.save(genre);
         gravity.setGenre(genre);
 
         Artiste cuaron = new Artiste();
@@ -38,7 +43,7 @@ public class FilmServiceImpl extends AbstractServiceImpl<Film> implements FilmSe
 
         // Sauvegardons dans la base
         save(gravity);
-        //artisteService.save(cuaron);
+        artisteService.save(cuaron);
 
         /*
         SQL

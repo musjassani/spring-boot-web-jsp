@@ -19,6 +19,7 @@ public abstract class AbstractServiceImpl<E> implements AbstractService<E> {
     AbstractDao<E> dao;
 
     @Override
+    @Transactional
     public void save(E e) {
         dao.save(e);
     }
