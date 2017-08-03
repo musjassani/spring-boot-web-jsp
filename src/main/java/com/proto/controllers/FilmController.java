@@ -87,7 +87,7 @@ public class FilmController {
             model.put("error", e.getMessage());
         }
         //http://www.baeldung.com/spring-redirect-and-forward
-        return new ModelAndView("/", model);
+        return new ModelAndView("redirect:/films", model);
     }
 
 }
